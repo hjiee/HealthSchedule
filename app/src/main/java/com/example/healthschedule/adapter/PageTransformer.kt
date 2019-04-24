@@ -1,6 +1,7 @@
 package com.example.healthschedule.adapter
 
-import android.support.v4.view.ViewPager
+import android.support.v4.view.ViewPager.PageTransformer
+import android.util.Log
 import android.view.View
 
 /*******************************************************************
@@ -11,20 +12,26 @@ import android.view.View
  */
 
 
-class PageTransformer : ViewPager.PageTransformer {
+class PageTransformer : PageTransformer {
 
-    internal val SCALE_MAX = 0.8f
-    internal val ALPHA_MAX = 0.5f
+    private val scaleMax = 0.8f
+    private val alphaMax = 0.5f
 
     override fun transformPage(page: View, position: Float) {
-        val scale = if (position < 0)
-            (1 - SCALE_MAX) * position + 1
-        else
-            (SCALE_MAX - 1) * position + 1
-        val alpha = if (position < 0)
-            (1 - ALPHA_MAX) * position + 1
-        else
-            (ALPHA_MAX - 1) * position + 1
+//        page.translationX = horizontalPadding
+
+        val scale =
+            if (position < 0)
+                (1 - scaleMax) * position + 1
+            else
+                (scaleMax - 1) * position + 1
+
+        val alpha =
+            if (position < 0)
+                (1 - alphaMax) * position + 1
+            else
+                (alphaMax - 1) * position + 1
+
         if (position < 0) {
             page.pivotX = page.width.toFloat()
             page.pivotY = (page.height / 2).toFloat()
@@ -34,6 +41,8 @@ class PageTransformer : ViewPager.PageTransformer {
         }
         page.scaleX = scale
         page.scaleY = scale
+        Log.d("PagerTransformer","$position")
+        Log.d("PagerTransformer","-----------------------------------")
         page.alpha = Math.abs(alpha)
     }
 }
