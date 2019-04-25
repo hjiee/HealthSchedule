@@ -2,7 +2,7 @@ package com.example.healthschedule.adapter
 
 import com.example.healthschedule.utils.CardItem
 
-interface PageContract {
+interface PageAdapterContract {
 
     interface Model {
         fun addItem(item : CardItem)

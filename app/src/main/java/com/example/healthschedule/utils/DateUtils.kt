@@ -2,7 +2,7 @@ package com.example.healthschedule.utils
 
 import java.util.*
 
-class DateUtil {
+class DateUtils {
     companion object {
         val instance = Calendar.getInstance()
         val day = instance.get(Calendar.DAY_OF_WEEK)-1 // 한주의 요일을 구한다.(일 = 0)

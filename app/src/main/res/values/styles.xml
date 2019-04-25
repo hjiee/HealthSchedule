@@ -8,4 +8,27 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Floating Button -->
+    <style name="FloatingActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="backgroundTint">#ffffff</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+    </style>
+
+    <!--Floating Sub Button -->
+    <style name="FloatingActionSubButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="layout_constraintRight_toRightOf">parent</item>
+        <item name="android:visibility">invisible</item>
+        <item name="backgroundTint">#ffffff</item>
+        <item name="elevation">6dp</item>
+        <item name="pressedTranslationZ">12dp</item>
+    </style>
+
 </resources>

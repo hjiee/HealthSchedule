@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity">
+    tools:context=".view.main.MainActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
@@ -23,47 +23,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/viewpager"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-    </android.support.v7.widget.RecyclerView>
+        app:layout_constraintBottom_toBottomOf="parent"></android.support.v7.widget.RecyclerView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="15sp"
-        android:backgroundTint="#9500ff"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        style="@style/FloatingActionButton"
+        android:src="@mipmap/ic_add"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
+
+    <!--Sub Floating-->
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="90dp"
-        android:layout_marginRight="15sp"
-        android:visibility="invisible"
-        app:backgroundTint="#ffffff"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:id="@+id/fabSub1"
+        style="@style/FloatingActionSubButton"
+        android:src="@mipmap/ic_edit"
+        app:layout_constraintBottom_toTopOf="@+id/fabSub2" />
 
+
+    <!--Sub Floating-->
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="160dp"
-        android:layout_marginRight="15sp"
-        android:visibility="invisible"
-        app:backgroundTint="#ffffff"
-        app:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
+        android:id="@+id/fabSub2"
+        style="@style/FloatingActionSubButton"
+        android:src="@mipmap/ic_calendar"
+        app:layout_constraintBottom_toTopOf="@+id/fab" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">HealthSchedule</string>
     <string name="item_nature_title">Nature %d</string>
+    <string name="BackPress">종료하려면 한번 더 누르세요.</string>
 </resources>

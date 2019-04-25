@@ -1,4 +1,4 @@
-package com.example.healthschedule.view.pagefragment
+package com.example.healthschedule.view.main
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,10 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.healthschedule.R
-import com.example.healthschedule.utils.DateUtil
+import com.example.healthschedule.utils.DateUtils
 import kotlinx.android.synthetic.main.day.*
 
-class DayFragment : Fragment() {
+class DayViewPageFragment : Fragment() {
 
     var cardView : CardView? = null
         private set
@@ -26,14 +26,14 @@ class DayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val position = arguments!!.getInt(EXTRA_POSITION)
-        tv_day.text = "${DateUtil.getDay(position)}"
-        tv_week.text = "${DateUtil.month}월 ${DateUtil.getWeek()} 주차"
+        tv_day.text = "${DateUtils.getDay(position)}"
+        tv_week.text = "${DateUtils.month}월 ${DateUtils.getWeek()} 주차"
 
     }
 
     companion object {
         private const val EXTRA_POSITION = "EXTRA_POSITION"
-        fun newInstance(postion : Int) = DayFragment().apply {
+        fun newInstance(postion : Int) = DayViewPageFragment().apply {
             arguments = Bundle().apply {
                 putInt(EXTRA_POSITION,postion)
             }

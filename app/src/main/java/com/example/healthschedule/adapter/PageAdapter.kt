@@ -3,12 +3,11 @@ package com.example.healthschedule.adapter
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v7.widget.CardView
 import com.example.healthschedule.utils.CardItem
-import com.example.healthschedule.view.pagefragment.*
+import com.example.healthschedule.view.main.DayViewPageFragment
 import java.util.ArrayList
 
-class PageAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm), PageContract.Model,PageContract.View {
+class PageAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm), PageAdapterContract.Model,PageAdapterContract.View {
     private val pageCount = 7
     private val mData: MutableList<CardItem>
 
@@ -17,7 +16,7 @@ class PageAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm), PageContract
     }
 
     override fun getItem(position: Int): Fragment {
-        return DayFragment.newInstance(position)
+        return DayViewPageFragment.newInstance(position)
     }
 
     override fun getCount() = pageCount
