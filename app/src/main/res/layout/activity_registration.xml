@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_registration">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.example.healthschedule.utils.CustomView
+                android:id="@+id/view_monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:image="@drawable/monday"
+                app:text="@string/SelectWorkoutName"
+                android:onClick="onClick"></com.example.healthschedule.utils.CustomView>
+
+            <com.example.healthschedule.utils.CustomView
+                android:id="@+id/view_tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:image="@drawable/tuesday"
+                app:text="@string/SelectWorkoutName"
+                android:onClick="onClick"
+                app:layout_constraintTop_toBottomOf="@+id/view_monday"></com.example.healthschedule.utils.CustomView>
+
+            <com.example.healthschedule.utils.CustomView
+                android:id="@+id/view_wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:image="@drawable/wednesday"
+                app:text="@string/SelectWorkoutName"
+                android:onClick="onClick"
+                app:layout_constraintTop_toBottomOf="@+id/view_tuesday"></com.example.healthschedule.utils.CustomView>
+
+            <com.example.healthschedule.utils.CustomView
+                android:id="@+id/view_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:image="@drawable/thursday"
+                app:text="@string/SelectWorkoutName"
+                android:onClick="onClick"
+                app:layout_constraintTop_toBottomOf="@+id/view_wednesday"></com.example.healthschedule.utils.CustomView>
+
+            <com.example.healthschedule.utils.CustomView
+                android:id="@+id/view_friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:image="@drawable/friday"
+                app:text="@string/SelectWorkoutName"
+                android:onClick="onClick"
+                app:layout_constraintTop_toBottomOf="@+id/view_thursday"></com.example.healthschedule.utils.CustomView>
+
+            <com.example.healthschedule.utils.CustomView
+                android:id="@+id/view_saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:image="@drawable/saturday"
+                app:text="@string/SelectWorkoutName"
+                android:onClick="onClick"
+                app:layout_constraintTop_toBottomOf="@+id/view_friday"></com.example.healthschedule.utils.CustomView>
+
+            <com.example.healthschedule.utils.CustomView
+                android:id="@+id/view_sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:image="@drawable/sunday"
+                app:text="@string/SelectWorkoutName"
+                android:onClick="onClick"
+                app:layout_constraintTop_toBottomOf="@+id/view_saturday"></com.example.healthschedule.utils.CustomView>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_check"
+        style="@style/FloatingActionButton"
+        android:src="@mipmap/ic_check"/>
+
+    <Button
+        android:id="@+id/btn_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="등록" />
 
 </android.support.constraint.ConstraintLayout>

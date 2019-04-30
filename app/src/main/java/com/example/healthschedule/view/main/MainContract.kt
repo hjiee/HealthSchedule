@@ -1,8 +1,10 @@
 package com.example.healthschedule.view.main
 
 import android.content.Context
-import android.view.View
-import com.example.healthschedule.adapter.PageAdapterContract
+import com.example.healthschedule.adapter.page.PageAdapterContract
+import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
+import com.example.healthschedule.data.CardItem
+import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 
 interface MainContract {
 
@@ -13,18 +15,25 @@ interface MainContract {
 
         var pagerAdapterModel : PageAdapterContract.Model
 
+        var workoutAdapterView : WorkoutAdapterContract.AdaterView
+
+        var workoutAdapterModel : WorkoutAdapterContract.AdapterModel
+
+        var weeklyWorkoutData : WeeklyWorkoutRepository
+
         fun anim(view : android.view.View)
 
-        fun redirection(view : android.view.View, context : Context)
+        fun getViewPagerMargin(context: Context) : Int
 
+        fun registrationWorkout(workoutName: ArrayList<CardItem>)
 
-        fun initView()
+        fun initWeekly() : ArrayList<CardItem>
 
+        fun loadItems(position : Int,isClear : Boolean)
 
+        fun getItem(postion : Int) : String?
     }
     interface View {
-        fun showToast(message : String)
-
         fun showToggle(isOpen : Boolean)
     }
 }

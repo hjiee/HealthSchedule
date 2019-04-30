@@ -15,6 +15,7 @@
         <item name="android:layout_gravity">bottom|end</item>
         <item name="android:layout_margin">15dp</item>
         <item name="backgroundTint">#ffffff</item>
+        <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
     </style>
 
@@ -31,4 +32,11 @@
         <item name="pressedTranslationZ">12dp</item>
     </style>
 
+    <style name="ToolbarStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/cardview_dark_background</item>
+        <item name="titleTextColor">#ffffff</item>
+        <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
 </resources>

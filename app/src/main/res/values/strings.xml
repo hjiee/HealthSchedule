@@ -2,4 +2,16 @@
     <string name="app_name">HealthSchedule</string>
     <string name="item_nature_title">Nature %d</string>
     <string name="BackPress">종료하려면 한번 더 누르세요.</string>
+
+    <!--Error Message-->
+    <string name="NotFound">실패하였습니다.</string>
+    <!--툴바 Title-->
+    <string name="Title_Main">한 주의 운동 계획</string>
+    <string name="Title_Registration">운동 등록/수정</string>
+    <string name="Title_Calendar">운동달력</string>
+
+    <!--운동 등록-->
+    <string name="SelectWorkoutName">클릭하여 운동을 선택해주세요.</string>
+    <string name="InputTheWorkoutName">운동명을 입력해주세요</string>
+    <string name="EmptyRegistration">등록된 운동이 없습니다.</string>
 </resources>

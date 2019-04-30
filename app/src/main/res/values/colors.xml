@@ -6,4 +6,5 @@
     <color name="colorPager">#F1FFE0</color>
     <color name="colorwhite">#FFFFFF</color>
     <color name="transparent">#00000000</color>
+    <color name="daily_week">#3D446E</color>
 </resources>
