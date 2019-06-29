@@ -1,6 +1,7 @@
 package com.example.healthschedule.view.main
 
 import android.content.Context
+import android.view.animation.Animation
 import com.example.healthschedule.adapter.page.PageAdapterContract
 import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
 import com.example.healthschedule.data.CardItem
@@ -9,7 +10,7 @@ import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 interface MainContract {
 
     interface Presenter {
-        var view : View
+        var mainView : View
 
         var pageAdapterAdapterView : PageAdapterContract.View
 
@@ -21,7 +22,7 @@ interface MainContract {
 
         var weeklyWorkoutData : WeeklyWorkoutRepository
 
-        fun anim(view : android.view.View)
+        fun anim()
 
         fun getViewPagerMargin(context: Context) : Int
 
@@ -34,6 +35,8 @@ interface MainContract {
         fun getItem(postion : Int) : String?
     }
     interface View {
-        fun showToggle(isOpen : Boolean)
+        fun showSubFab(fabAction : Animation, fabRotateAction : Animation)
+        fun hideSubFab(fabAction : Animation, fabRotateAction : Animation)
+        fun isClickable(state : Boolean)
     }
 }

@@ -22,7 +22,8 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintBottom_toTopOf="@+id/recycler"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"></android.support.v4.view.ViewPager>
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"></android.support.v4.view.ViewPager>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
@@ -37,6 +38,17 @@
         android:src="@mipmap/ic_add" />
 
 
+    <TextView
+        android:id="@+id/tv_registration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="운동등록"
+        android:textColor="#FFFFFF"
+        style="@style/FloatingActionSubExplainText"
+        app:layout_constraintTop_toTopOf="@+id/fabSub1"
+        app:layout_constraintBottom_toBottomOf="@id/fabSub1"
+        app:layout_constraintRight_toLeftOf="@+id/fabSub1" />
+
     <!--Sub Floating-->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabSub1"
@@ -44,6 +56,17 @@
         android:src="@mipmap/ic_edit"
         app:layout_constraintBottom_toTopOf="@+id/fabSub2" />
 
+
+    <TextView
+        android:id="@+id/tv_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="운동달력"
+        android:textColor="#FFFFFF"
+        style="@style/FloatingActionSubExplainText"
+        app:layout_constraintTop_toTopOf="@+id/fabSub2"
+        app:layout_constraintBottom_toBottomOf="@id/fabSub2"
+        app:layout_constraintRight_toLeftOf="@+id/fabSub2" />
 
     <!--Sub Floating-->
     <android.support.design.widget.FloatingActionButton

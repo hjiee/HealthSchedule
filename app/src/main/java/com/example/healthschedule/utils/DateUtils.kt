@@ -10,10 +10,10 @@ class DateUtils {
         val month = instance.get(Calendar.MONTH)+1 // 월을 구한다.
 
         // 요일을 반환한다.
-        fun getDay(position : Int) : String {
+        fun getDay(position : Int?) : String {
             val revise = 0
             return when (position) {
-                revise   -> "일요일"
+                revise+0 -> "일요일"
                 revise+1 -> "월요일"
                 revise+2 -> "화요일"
                 revise+3 -> "수요일"

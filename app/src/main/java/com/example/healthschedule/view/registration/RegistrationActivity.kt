@@ -5,12 +5,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.workout.WorkoutAdapter
+import com.example.healthschedule.base.BaseActivity
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 import com.example.healthschedule.utils.ToastUtils.showToast
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.custom_view_weekly_workout_item.view.*
 
-class RegistrationActivity : AppCompatActivity(), RegistrationContract.View {
+class RegistrationActivity : BaseActivity(), RegistrationContract.View {
     lateinit var presenter: RegistrationPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +30,6 @@ class RegistrationActivity : AppCompatActivity(), RegistrationContract.View {
 
         fab_check.setOnClickListener {
             showToast("등록")
-            finish()
-        }
-        btn_registration.setOnClickListener {
-//            presenter.registrationWorkout(presenter.addWeekly())
-            showToast(btn_registration.text.toString())
             finish()
         }
     }
