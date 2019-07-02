@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
+import android.view.View
 import android.view.animation.Animation
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.page.PageAdapter
@@ -35,9 +36,31 @@ class MainActivity : BaseActivity(), MainContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        var move : Boolean = false
         // ViewPager 어댑터
         pageAdapter = PageAdapter(supportFragmentManager)
         viewpager.adapter = pageAdapter
+
+        viewpager.setOnTouchListener { v, event ->
+            Log.e("viewpager",event.toString())
+
+            when(event.action) {
+                MotionEvent.ACTION_DOWN -> if(!move) v.performClick() else false
+                MotionEvent.ACTION_UP -> {
+                    move = false
+                    move
+                }
+                MotionEvent.ACTION_MOVE -> {
+                    move = false
+                    move
+                }
+                else -> false
+            }
+        }
+        viewpager.setOnClickListener {
+            showToast(viewpager.currentItem.toString())
+        }
 
         // Weekly Workout 어댑터
         workoutAdapter = WorkoutAdapter()
@@ -120,7 +143,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         tv_calendar.startAnimation(fabAction)
     }
 
-    override fun isClickable(state: Boolean) {
+    override fun isExpanded(state: Boolean) {
         fabSub1.isClickable = state
         fabSub2.isClickable = state
         presenter.isButtonExtended = state
@@ -128,18 +151,19 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     private fun setOnClickListener() {
 //        presenter.loadItems(DateUtils.day,false)
+
+
+
         // 운동 페이지가 움직일때 이벤트 처리
-        viewpager.setOnTouchListener { v, event ->
-            showToast(v.tv_day.text.toString())
-            onTouchEvent(event)
-        }
-        viewpager!!.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
             }
 
             override fun onPageSelected(position: Int) {
-                Log.e("LifeTest","currentPosition : $position")
+                Log.e("LifeTest", "currentPosition : $position")
+                Log.e("LifeTest", "currentItem : ${viewpager.currentItem}")
+
                 showToast(
                     "$position\n${DateUtils.getWeek()}\n" +
                             "${DateUtils.getDay(position)}\n" +

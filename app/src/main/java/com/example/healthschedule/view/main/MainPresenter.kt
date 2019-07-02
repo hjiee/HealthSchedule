@@ -31,11 +31,11 @@ class MainPresenter : MainContract.Presenter {
         when (isButtonExtended) {
             true -> {
                 mainView.hideSubFab(fabClose, fabRotateClose)
-                mainView.isClickable(false)
+                mainView.isExpanded(false)
             }
             false -> {
                 mainView.showSubFab(fabOpen, fabRotateOpen)
-                mainView.isClickable(true)
+                mainView.isExpanded(true)
             }
         }
     }

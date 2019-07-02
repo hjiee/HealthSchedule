@@ -22,6 +22,7 @@ interface MainContract {
 
         var weeklyWorkoutData : WeeklyWorkoutRepository
 
+
         fun anim()
 
         fun getViewPagerMargin(context: Context) : Int
@@ -34,9 +35,21 @@ interface MainContract {
 
         fun getItem(postion : Int) : String?
     }
+
     interface View {
+        /**
+         * Floating button을 클릭시 확장되는 SubFloating button을 보여준다.
+         */
         fun showSubFab(fabAction : Animation, fabRotateAction : Animation)
+
+        /**
+         * Floating button을 클릭시 확장되어 있는 SubFloating button을 숨긴다.
+         */
         fun hideSubFab(fabAction : Animation, fabRotateAction : Animation)
-        fun isClickable(state : Boolean)
+
+        /**
+         * Floating button이 확장되어있는지 여부를 반환한다.
+         */
+        fun isExpanded(state : Boolean)
     }
 }
