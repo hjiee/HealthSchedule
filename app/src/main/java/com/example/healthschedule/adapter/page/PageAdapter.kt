@@ -7,7 +7,7 @@ import com.example.healthschedule.data.CardItem
 import com.example.healthschedule.view.main.DayViewPageFragment
 import java.util.ArrayList
 
-class PageAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm),
+class PageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm),
     PageAdapterContract.Model,
     PageAdapterContract.View {
     private val pageCount = 7
@@ -30,5 +30,7 @@ class PageAdapter(fm : FragmentManager) : FragmentPagerAdapter(fm),
     override fun deleteItem(position: Int) {
         mData.removeAt(position)
     }
+
+
 }
 

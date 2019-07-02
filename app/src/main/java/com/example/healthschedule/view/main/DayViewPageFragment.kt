@@ -11,10 +11,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.healthschedule.R
+import com.example.healthschedule.base.BaseFragment
 import com.example.healthschedule.utils.DateUtils
 import kotlinx.android.synthetic.main.fragment_weekly_workout.*
 
-class DayViewPageFragment : Fragment() {
+class DayViewPageFragment : BaseFragment() {
 
     var cardView: CardView? = null
         private set
@@ -84,6 +85,9 @@ class DayViewPageFragment : Fragment() {
         tv_week.text = "${DateUtils.month}월 ${DateUtils.getWeek()} 주차"
 
     }
+
+
+
 
     companion object {
         private const val EXTRA_POSITION = "EXTRA_POSITION"
