@@ -21,13 +21,13 @@
             android:background="@color/cardview_dark_background" />
 
         <TextView
-            android:id="@+id/tv_day"
+            android:id="@+id/tv_week"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp" />
 
         <TextView
-            android:id="@+id/tv_week"
+            android:id="@+id/tv_weekly"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_day"

@@ -23,6 +23,7 @@ import com.example.healthschedule.view.calendar.CalendarActivity
 import com.example.healthschedule.view.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_weekly_workout.view.*
+import java.util.*
 
 class MainActivity : BaseActivity(), MainContract.View {
     private lateinit var presenter: MainPresenter
@@ -31,36 +32,14 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     private var backPressedTime = 0L
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        var move : Boolean = false
         // ViewPager 어댑터
         pageAdapter = PageAdapter(supportFragmentManager)
         viewpager.adapter = pageAdapter
-
-        viewpager.setOnTouchListener { v, event ->
-            Log.e("viewpager",event.toString())
-
-            when(event.action) {
-                MotionEvent.ACTION_DOWN -> if(!move) v.performClick() else false
-                MotionEvent.ACTION_UP -> {
-                    move = false
-                    move
-                }
-                MotionEvent.ACTION_MOVE -> {
-                    move = false
-                    move
-                }
-                else -> false
-            }
-        }
-        viewpager.setOnClickListener {
-            showToast(viewpager.currentItem.toString())
-        }
 
         // Weekly Workout 어댑터
         workoutAdapter = WorkoutAdapter()
@@ -79,10 +58,10 @@ class MainActivity : BaseActivity(), MainContract.View {
 
         val margin: Int = presenter.getViewPagerMargin(this)
 //        viewpager.setPageTransformer(true, PageTransformer()) // 뷰페이저 이동시 생기는 이펙트효과
-        viewpager.offscreenPageLimit = 2
+        viewpager.offscreenPageLimit = 4
         viewpager.setPadding(margin * 5, margin, margin * 5, margin)
         viewpager.pageMargin = (margin / 2)
-        viewpager.currentItem = DateUtils.day // 현재 요일
+        viewpager.currentItem = DateUtils.week // 현재 요일
 
 
         setSupportActionBar(toolbar)
@@ -150,8 +129,37 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     private fun setOnClickListener() {
+        var count = 0;
+        var moveStart = 0f;
+        var moveEnd = 0f;
 //        presenter.loadItems(DateUtils.day,false)
+        viewpager.setOnTouchListener { v, event ->
+                        Log.e("viewpager",event.toString())
 
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    moveStart = event.x
+                    false
+                }
+                MotionEvent.ACTION_UP -> {
+                    Log.e("viewpager", count.toString())
+                    moveEnd = event.x
+                    var distance = Math.abs(moveStart - moveEnd)
+                    Log.e("viewpager", distance.toString())
+                    if (count < 7 && distance < 100) v.performClick()
+                    count = 0
+                    false
+                }
+                else -> {
+                    count++
+                    false
+                }
+            }
+        }
+        viewpager.setOnClickListener {
+//            showToast("${DateUtils.year}년 ${DateUtils.month}월 ${DateUtils.day}일 ${DateUtils.getWeek(viewpager.currentItem)}")
+            showToast("${DateUtils.getDate(DateUtils.week, viewpager.currentItem)}")
+        }
 
 
         // 운동 페이지가 움직일때 이벤트 처리
@@ -161,14 +169,14 @@ class MainActivity : BaseActivity(), MainContract.View {
             }
 
             override fun onPageSelected(position: Int) {
-                Log.e("LifeTest", "currentPosition : $position")
-                Log.e("LifeTest", "currentItem : ${viewpager.currentItem}")
+//                Log.e("LifeTest", "currentPosition : $position")
+//                Log.e("LifeTest", "currentItem : ${viewpager.currentItem}")
 
-                showToast(
-                    "$position\n${DateUtils.getWeek()}\n" +
-                            "${DateUtils.getDay(position)}\n" +
-                            "${presenter.getItem(position)}"
-                )
+//                showToast(
+//                    "$position\n${DateUtils.getWeek()}\n" +
+//                            "${DateUtils.getDay(position)}\n" +
+//                            "${presenter.getItem(position)}"
+//                )
             }
 
             override fun onPageScrollStateChanged(state: Int) {
