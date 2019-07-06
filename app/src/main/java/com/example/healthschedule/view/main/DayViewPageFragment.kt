@@ -82,7 +82,7 @@ class DayViewPageFragment : BaseFragment() {
 
         Log.e("LifeTest", "onViewCreated : $staticPosition")
         tv_week.text = "${DateUtils.getDate(DateUtils.week,currentPosition ?: 0)}"
-        tv_weekly.text = "${DateUtils.month}월 ${DateUtils.getWeek()} 주차"
+        tv_weekly.text = "${DateUtils.month}월 ${DateUtils.weekly} 주차"
 
     }
 
