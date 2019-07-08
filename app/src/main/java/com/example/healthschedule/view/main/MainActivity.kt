@@ -2,11 +2,9 @@ package com.example.healthschedule.view.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
-import android.view.View
 import android.view.animation.Animation
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.page.PageAdapter
@@ -15,15 +13,13 @@ import com.example.healthschedule.base.BaseActivity
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 import com.example.healthschedule.utils.CommonDefine.Companion.REQUEST_CODE_CALENDAR
 import com.example.healthschedule.utils.CommonDefine.Companion.REQUEST_CODE_REGISTRATION
-import com.example.healthschedule.utils.DateUtils
-import com.example.healthschedule.utils.LogUtils
+import com.example.healthschedule.utils.DateUtils.getDate
+import com.example.healthschedule.utils.DateUtils.getTodayPosition
 import com.example.healthschedule.utils.ToastUtils.cancelToast
 import com.example.healthschedule.utils.ToastUtils.showToast
 import com.example.healthschedule.view.calendar.CalendarActivity
 import com.example.healthschedule.view.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_weekly_workout.view.*
-import java.util.*
 
 class MainActivity : BaseActivity(), MainContract.View {
     private lateinit var presenter: MainPresenter
@@ -61,7 +57,7 @@ class MainActivity : BaseActivity(), MainContract.View {
         viewpager.offscreenPageLimit = 4
         viewpager.setPadding(margin * 5, margin, margin * 5, margin)
         viewpager.pageMargin = (margin / 2)
-        viewpager.currentItem = DateUtils.week // 현재 요일
+        viewpager.currentItem = getTodayPosition() // 현재 요일
 
 
         setSupportActionBar(toolbar)
@@ -157,51 +153,25 @@ class MainActivity : BaseActivity(), MainContract.View {
             }
         }
         viewpager.setOnClickListener {
-//            showToast("${DateUtils.year}년 ${DateUtils.month}월 ${DateUtils.day}일 ${DateUtils.getWeek(viewpager.currentItem)}")
-            showToast("${DateUtils.getDate(DateUtils.week, viewpager.currentItem)}")
+//            showToast("${DateUtils.getDate(DateUtils.week, viewpager.currentItem)}")
+            showToast("${getDate(viewpager.currentItem)}")
         }
 
 
-        // 운동 페이지가 움직일때 이벤트 처리
-        viewpager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-//                Log.e("LifeTest", "currentPosition : $position")
-//                Log.e("LifeTest", "currentItem : ${viewpager.currentItem}")
-
-//                showToast(
-//                    "$position\n${DateUtils.getWeek()}\n" +
-//                            "${DateUtils.getDay(position)}\n" +
-//                            "${presenter.getItem(position)}"
-//                )
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-        })
 
         // Floating 버튼 클릭 이벤트
         fab.setOnClickListener {
-            showToast("확장")
-            LogUtils.i(null, "확장!!")
             presenter.anim()
         }
         fabSub1.setOnClickListener {
-            showToast("운동등록")
             presenter.anim()
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_REGISTRATION)
-//            startActivity(intent)
         }
         fabSub2.setOnClickListener {
             presenter.anim()
             val intent = Intent(this, CalendarActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_CALENDAR)
-//            startActivity(intent)
         }
     }
 

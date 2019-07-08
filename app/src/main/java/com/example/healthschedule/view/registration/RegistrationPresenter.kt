@@ -1,7 +1,7 @@
 package com.example.healthschedule.view.registration
 
 import android.content.Context
-import android.support.v7.app.AlertDialog
+import androidx.appcompat.app.AlertDialog
 import android.text.format.DateUtils
 import android.view.LayoutInflater
 import com.example.healthschedule.R

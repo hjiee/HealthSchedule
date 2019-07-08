@@ -1,7 +1,7 @@
 package com.example.healthschedule.view.calendar
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthschedule.R
 import com.example.healthschedule.base.BaseActivity
 import com.example.healthschedule.utils.ToastUtils.showToast
