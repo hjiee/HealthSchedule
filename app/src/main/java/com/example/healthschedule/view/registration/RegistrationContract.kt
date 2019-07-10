@@ -1,6 +1,7 @@
 package com.example.healthschedule.view.registration
 
 import android.content.Context
+import androidx.fragment.app.FragmentManager
 import com.example.healthschedule.data.CardItem
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 
@@ -19,6 +20,6 @@ interface RegistrationContract {
 
         fun addWeekly() : ArrayList<CardItem>
 
-        fun dialog(context: Context,viewId : Int)
+        fun dialog(supportFragmentManager: FragmentManager,viewId : Int)
     }
 }

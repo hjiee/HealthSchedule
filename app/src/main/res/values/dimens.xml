@@ -9,4 +9,7 @@
   <dimen name="dimens_72dp">72dp</dimen>
   <dimen name="dimens_92dp">92dp</dimen>
   <dimen name="dimens_124dp">124dp</dimen>
+
+  <!--Material Button Text Size-->
+  <dimen name="text_size">16sp</dimen>
 </resources>

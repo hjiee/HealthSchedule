@@ -48,6 +48,8 @@ class RegistrationActivity : BaseActivity(), RegistrationContract.View {
     }
 
     fun onClick(view: View) {
-        presenter.dialog(this, view.id)
+        presenter.dialog(supportFragmentManager, view.id)
+
+
     }
 }

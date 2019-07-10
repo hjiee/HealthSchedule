@@ -2,15 +2,13 @@ package com.example.healthschedule.view.registration
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
-import android.text.format.DateUtils
 import android.view.LayoutInflater
+import androidx.fragment.app.FragmentManager
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
 import com.example.healthschedule.data.CardItem
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 import com.example.healthschedule.data.source.WeeklyWorkoutSource
-import kotlinx.android.synthetic.main.activity_registration.*
-import kotlinx.android.synthetic.main.custom_view_weekly_workout_item.view.*
 
 class RegistrationPresenter : RegistrationContract.Presenter {
 
@@ -28,22 +26,26 @@ class RegistrationPresenter : RegistrationContract.Presenter {
         })
     }
 
-    override fun dialog(context: Context,viewId : Int) {
-        val builder = AlertDialog.Builder(context)
-        val dialogView = LayoutInflater.from(context).inflate(R.layout.registration_dialog,null)
-        var isSaved : Boolean = false
-        builder.setView(dialogView)
-            .setPositiveButton("저장") {
-                    _, _ ->
-                isSaved = true
-                view.setDailyWorkout(viewId,isSaved.toString())
+    override fun dialog(supportFragmentManager: FragmentManager,viewId : Int) {
+        val viewTag: String by lazy {
+            when (viewId) {
+                R.id.view_monday -> "월요일"
+                R.id.view_tuesday -> "화요일"
+                R.id.view_wednesday -> "수요일"
+                R.id.view_thursday -> "목요일"
+                R.id.view_friday -> "금요일"
+                R.id.view_saturday -> "토요알"
+                R.id.view_sunday -> "일요일"
+                else -> ""
             }
-            .setNegativeButton("취소") {
-                    _, _ ->
-                isSaved = false
-                view.setDailyWorkout(viewId,isSaved.toString())
-            }
-            .show()
+        }
+        RegistrationDialogFragment.newInstance()
+            .show(supportFragmentManager,viewTag)
+
+    }
+
+    private fun resultDialog() {
+
     }
 
     override fun addWeekly() : ArrayList<CardItem>{

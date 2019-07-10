@@ -7,4 +7,15 @@ class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
     }
+
+    fun showToast() {
+
+    }
+    fun stopToast() {
+
+    }
+
+    fun showMessage(message : String) {
+
+    }
 }
