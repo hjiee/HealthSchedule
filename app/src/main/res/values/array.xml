@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="choice_week">
+        <item>월요일</item>
+        <item>화요일</item>
+        <item>수요일</item>
+        <item>목요일</item>
+        <item>금요일</item>
+        <item>토요일</item>
+        <item>일요일</item>
+    </array>
+
+
+    <string-array name="workout_list">
+        <item>어깨</item>
+        <item>가슴</item>
+        <item>삼두근</item>
+        <item>이두근</item>
+        <item>전완근</item>
+        <item>복부</item>
+        <item>등</item>
+        <item>허리</item>
+        <item>엉덩이</item>
+        <item>하체</item>
+        <item>스포츠</item>
+    </string-array>
+</resources>

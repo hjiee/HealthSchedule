@@ -81,6 +81,7 @@
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_check"
         style="@style/FloatingActionButton"
-        android:src="@mipmap/ic_check" />
+        android:src="@mipmap/ic_check"
+     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

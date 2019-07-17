@@ -12,11 +12,11 @@
     <style name="MaterialOutLineButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:paddingLeft">@dimen/mtrl_btn_padding_left</item>
         <item name="android:paddingRight">@dimen/mtrl_btn_padding_right</item>
-        <item name="android:strokeColor">@color/daily_week</item>
-        <item name="android:textColor">@color/daily_week</item>
+        <item name="android:strokeColor">@color/colorToolbar</item>
+        <item name="android:textColor">@color/colorToolbar</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/text_size</item>
-        <item name="strokeWidth">@dimen/mtrl_btn_stroke_size</item>
+        <item name="strokeWidth">3dp</item>
     </style>
 
     <!--Floating Button -->
@@ -25,7 +25,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">bottom|end</item>
         <item name="android:layout_margin">15dp</item>
-        <item name="backgroundTint">#ffffff</item>
+        <item name="backgroundTint">@color/colorToolbar</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintRight_toRightOf">parent</item>
     </style>
@@ -62,5 +62,10 @@
         <item name="android:background">@color/cardview_dark_background</item>
         <item name="titleTextColor">#ffffff</item>
         <item name="layout_constraintTop_toTopOf">parent</item>
+    </style>
+
+    <!--Dialog Custom Style-->
+    <style name="DialogCustomStyle" parent="Theme.MaterialComponents.Light.Dialog">
+
     </style>
 </resources>

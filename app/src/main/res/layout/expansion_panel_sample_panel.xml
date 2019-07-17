@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:layout_margin="@dimen/dimens_4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.example.healthschedule.view.registration.ExpansionHeader
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/sampleHeader"
+            app:expansion_headerIndicator="@id/headerIndicator"
+            app:expansion_layout="@id/expansionLayout"
+            app:expansion_toggleOnClick="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="horizontal">
+
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/view_lottie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:lottie_loop="true"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="dumble.json"
+                    app:lottie_scale="0.1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/sp_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dialog"
+                    android:gravity="center"
+                    android:entries="@array/workout_list"
+                    app:layout_constraintLeft_toRightOf="@+id/view_lottie"
+                    app:layout_constraintRight_toLeftOf="@+id/tv_workout_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                </androidx.appcompat.widget.AppCompatSpinner>
+
+
+                <TextView
+                    android:id="@+id/tv_workout_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="Choice the workout"
+                    android:textColor="#AAA"
+                    app:layout_constraintLeft_toRightOf="@+id/sp_name"
+                    app:layout_constraintRight_toLeftOf="@+id/headerIndicator"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/headerIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="16dp"
+                    app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp"
+                    android:adjustViewBounds="true"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.example.healthschedule.view.registration.ExpansionHeader>
+
+        <com.example.healthschedule.view.registration.ExpansionLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:expansion_expanded="false"
+            android:id="@+id/expansionLayout">
+
+            <LinearLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="#EEE"
+                    android:gravity="center"
+                    android:text="content" />
+
+            </LinearLayout>
+
+        </com.example.healthschedule.view.registration.ExpansionLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

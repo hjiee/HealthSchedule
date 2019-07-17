@@ -43,7 +43,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            tools:listitem="@layout/weekly_workout_item">
+            tools:listitem="@layout/fragment_weekly_workout_item">
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 

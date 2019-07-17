@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import com.example.healthschedule.data.CardItem
 
-class WorkoutAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<WorkoutViewHolder>(),
+class WorkoutAdapter : RecyclerView.Adapter<WorkoutViewHolder>(),
     WorkoutAdapterContract.AdaterView,
     WorkoutAdapterContract.AdapterModel {
 

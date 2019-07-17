@@ -65,6 +65,18 @@
             app:layout_constraintLeft_toRightOf="@+id/guideline5"
             app:layout_constraintRight_toRightOf="parent"
             android:text="@string/SelectWorkoutName" />
+
+        <ImageButton
+            android:id="@+id/btn_bring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:layout_marginRight="@dimen/dimens_8dp"
+            android:src="@mipmap/ic_bring"
+            app:layout_constraintRight_toRightOf="parent"
+            android:onClick="onClick"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/border">
+
+    <RadioGroup
+        android:id="@+id/group_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimens_16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/include_bottom_layout"
+        >
+
+        <RadioButton
+            android:id="@+id/btn_choice_radio_mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="월요일"
+            android:layout_gravity="center" />
+
+        <RadioButton
+            android:id="@+id/btn_choice_radio_tue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회요일"
+            android:layout_gravity="center" />
+
+        <RadioButton
+            android:id="@+id/btn_choice_radio_wed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수요일"
+            android:layout_gravity="center" />
+
+        <RadioButton
+            android:id="@+id/btn_choice_radio_thu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="목요일"
+            android:layout_gravity="center" />
+
+        <RadioButton
+            android:id="@+id/btn_choice_radio_fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="금요일"
+            android:layout_gravity="center" />
+
+        <RadioButton
+            android:id="@+id/btn_choice_radio_sat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="토요일"
+            android:layout_gravity="center" />
+
+        <RadioButton
+            android:id="@+id/btn_choice_radio_sun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="일요일"
+            android:layout_gravity="center" />
+    </RadioGroup>
+
+    <include
+        android:id="@+id/include_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/include_bottom_layout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"></include>
+</androidx.constraintlayout.widget.ConstraintLayout>

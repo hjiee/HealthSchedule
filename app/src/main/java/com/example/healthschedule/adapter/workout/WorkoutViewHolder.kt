@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.example.healthschedule.R
 
 class WorkoutViewHolder(parent: ViewGroup) :
-    androidx.recyclerview.widget.RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.weekly_workout_item, parent, false)){
+    RecyclerView.ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.fragment_weekly_workout_item, parent, false)){
 
     val tvWorkoutName by lazy {
         itemView.findViewById(R.id.tv_workout_name) as TextView

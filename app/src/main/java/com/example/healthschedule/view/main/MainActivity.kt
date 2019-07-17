@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.animation.Animation
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.page.PageAdapter
 import com.example.healthschedule.adapter.workout.WorkoutAdapter
@@ -26,7 +28,6 @@ class MainActivity : BaseActivity(), MainContract.View {
     private lateinit var pageAdapter: PageAdapter
     private lateinit var workoutAdapter: WorkoutAdapter
 
-    private var backPressedTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +50,7 @@ class MainActivity : BaseActivity(), MainContract.View {
             workoutAdapterModel = workoutAdapter
             weeklyWorkoutData = WeeklyWorkoutRepository
         }
-        presenter.registrationWorkout(presenter.initWeekly()) // 운동 초기화
+//        presenter.registrationWorkout(presenter.initWeekly()) // 운동 초기화
 
 
         val margin: Int = presenter.getViewPagerMargin(this)
@@ -57,13 +58,23 @@ class MainActivity : BaseActivity(), MainContract.View {
         viewpager.offscreenPageLimit = 4
         viewpager.setPadding(margin * 5, margin, margin * 5, margin)
         viewpager.pageMargin = (margin / 2)
-        viewpager.currentItem = getTodayPosition() // 현재 요일
+        viewpager.currentItem = getTodayPosition().let {
+            when(it) {
+                -1 -> 6
+                else -> it
+            }
+        }
+//            if(getTodayPosition()==-1) 6 else getTodayPosition() // 현재 요일
 
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true) // Toolbar의 왼쪽에 버튼을 추가한다.
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu) // 버튼의 아이콘을 변경한다.
-
+        ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close).let {
+            drawer.addDrawerListener(it)
+            it.syncState()
+            it.drawerArrowDrawable = DrawerArrowDrawable(this).apply {
+                color = resources.getColor(R.color.colorwhite,null)
+            }
+        }
         setOnClickListener()
     }
 
@@ -81,7 +92,7 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        showToast(requestCode.toString())
+//        showToast(requestCode.toString())
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -92,14 +103,7 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
 
-    override fun onBackPressed() =
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            super.onBackPressed()
-            cancelToast()
-        } else {
-            backPressedTime = System.currentTimeMillis()
-            showToast(resources.getString(R.string.BackPress))
-        }
+    override fun onBackPressed() = super.onBackPressed()
 
     override fun showSubFab(fabAction: Animation, fabRotateAction: Animation) {
         fab.startAnimation(fabRotateAction)

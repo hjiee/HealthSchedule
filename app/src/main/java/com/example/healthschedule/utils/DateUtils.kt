@@ -12,15 +12,18 @@ object DateUtils {
         return (viewPagePosition.minus(getTodayPosition())).let {
             when (it) {
                 0 -> getToday()
-                else -> getOtherDay(it)
+                else -> {
+                    if(getTodayPosition() == -1) getOtherDay(it-7)
+                    else getOtherDay(it)
+                }
             }
         }
     }
 
     fun getSimpleDateFormat(date: Date) = SimpleDateFormat("yyyy년 MM월 dd일 E요일").format(date).let { it }
 
-    fun getTodayPosition() =
-        (getCalendar().let { it.get(Calendar.DAY_OF_WEEK) - 2 }) // (일요일=-1 , 토요일=5)
+    fun getTodayPosition() = (getCalendar().let { it.get(Calendar.DAY_OF_WEEK) - 2 }) // (일요일=-1 , 토요일=5)
+//    fun getTodayPosition() = 5 // (일요일=-1 , 토요일=5)
 
     fun getToday() = getSimpleDateFormat(Date())
 
@@ -31,7 +34,6 @@ object DateUtils {
 
     fun getMonth() = getCalendar().let { it.get(Calendar.MONTH)+1 }.toString()
     fun getWeek() = getCalendar().let { it.get(Calendar.WEEK_OF_MONTH) }.toString()
-
     fun getCalendar() = Calendar.getInstance(TimeZone.getDefault())
 
 }

@@ -1,15 +1,17 @@
 package com.example.healthschedule.view.registration
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.workout.WorkoutAdapter
 import com.example.healthschedule.base.BaseActivity
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 import com.example.healthschedule.utils.ToastUtils.showToast
 import kotlinx.android.synthetic.main.activity_registration.*
-import kotlinx.android.synthetic.main.custom_view_weekly_workout_item.view.*
+import kotlinx.android.synthetic.main.custom_view_registartion_item.view.*
 
 class RegistrationActivity : BaseActivity(), RegistrationContract.View {
     lateinit var presenter: RegistrationPresenter
@@ -29,9 +31,13 @@ class RegistrationActivity : BaseActivity(), RegistrationContract.View {
         presenter.registrationWorkout(presenter.initWeekly())
 
         fab_check.setOnClickListener {
-            showToast("등록")
-            finish()
+            super.showAlterDialog()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
     }
 
     override fun setDailyWorkout(viewId: Int, result: String) {
@@ -49,7 +55,5 @@ class RegistrationActivity : BaseActivity(), RegistrationContract.View {
 
     fun onClick(view: View) {
         presenter.dialog(supportFragmentManager, view.id)
-
-
     }
 }
