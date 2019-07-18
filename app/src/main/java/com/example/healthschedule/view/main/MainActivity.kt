@@ -92,6 +92,10 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        when(requestCode) {
+            REQUEST_CODE_REGISTRATION -> Log.e("Registration","Add OK")
+            REQUEST_CODE_CALENDAR -> ""
+        }
 //        showToast(requestCode.toString())
     }
 
@@ -167,11 +171,13 @@ class MainActivity : BaseActivity(), MainContract.View {
         fab.setOnClickListener {
             presenter.anim()
         }
+        // 운동 등록
         fabSub1.setOnClickListener {
             presenter.anim()
             val intent = Intent(this, RegistrationActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_REGISTRATION)
         }
+        // 운동달력
         fabSub2.setOnClickListener {
             presenter.anim()
             val intent = Intent(this, CalendarActivity::class.java)
