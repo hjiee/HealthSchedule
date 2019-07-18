@@ -8,6 +8,7 @@ import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 interface RegistrationContract {
 
     interface View {
+
         fun setDailyWorkout(viewId : Int, result : String)
     }
 

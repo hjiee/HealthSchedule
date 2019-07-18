@@ -21,6 +21,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/img_all_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete_black_24"
+        android:layout_marginRight="@dimen/dimens_8dp"
+        app:layout_constraintTop_toTopOf="@id/tv_week"
+        app:layout_constraintBottom_toBottomOf="@id/tv_week"
+        app:layout_constraintRight_toRightOf="@id/recycler_workout" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_workout"
         android:layout_width="0dp"

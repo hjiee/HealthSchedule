@@ -1,8 +1,10 @@
 package com.example.healthschedule.view.registration
 
 import android.content.Context
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
@@ -29,7 +31,16 @@ class RegistrationPresenter : RegistrationContract.Presenter {
     override fun dialog(supportFragmentManager: FragmentManager, viewId: Int) {
         when (viewId) {
             R.id.btn_bring -> BringWorkoutDialogFragment.newInstance().show(supportFragmentManager,"")
-            else -> RegistrationDialogFragment.newInstance().show(supportFragmentManager, getTag(viewId))
+            else -> {
+                 RegistrationDialogFragment.newInstance().run {
+                     show(supportFragmentManager, getTag(viewId))
+                     setDailyWorkoutCallback(object : RegistrationDialogFragment.DailyWorkoutCallback {
+                         override fun result() {
+                             Log.e("Registration", "test")
+                         }
+                     })
+                 }
+            }
         }
     }
 
@@ -68,7 +79,7 @@ class RegistrationPresenter : RegistrationContract.Presenter {
             R.id.view_wednesday -> "수요일"
             R.id.view_thursday -> "목요일"
             R.id.view_friday -> "금요일"
-            R.id.view_saturday -> "토요알"
+            R.id.view_saturday -> "토요일"
             R.id.view_sunday -> "일요일"
             else -> ""
         }
