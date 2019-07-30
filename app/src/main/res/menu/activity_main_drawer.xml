@@ -1,37 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
-      tools:showIn="navigation_view">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="none">
         <item
-                android:id="@+id/nav_home"
-                android:icon="@drawable/nature_001"
-                android:title="@string/menu_home"/>
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/menu_profile" />
         <item
-                android:id="@+id/nav_gallery"
-                android:icon="@drawable/nature_001"
-                android:title="@string/menu_gallery"/>
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_chart"
+            android:title="@string/menu_statistics" />
         <item
-                android:id="@+id/nav_slideshow"
-                android:icon="@drawable/nature_001"
-                android:title="@string/menu_slideshow"/>
+            android:id="@+id/nav_board"
+            android:icon="@drawable/ic_board"
+            android:title="@string/menu_board" />
         <item
-                android:id="@+id/nav_tools"
-                android:icon="@drawable/nature_001"
-                android:title="@string/menu_tools"/>
+            android:id="@+id/nav_motivation"
+            android:icon="@drawable/ic_motivation"
+            android:title="@string/menu_motivation" />
     </group>
 
     <item android:title="Communicate">
         <menu>
             <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/nature_001"
-                    android:title="@string/menu_share"/>
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_contact"
+                android:title="@string/menu_contact" />
             <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/nature_001"
-                    android:title="@string/menu_send"/>
+                android:id="@+id/nav_star"
+                android:icon="@drawable/ic_star"
+                android:title="@string/menu_star" />
+        </menu>
+    </item>
+
+    <item android:title="Setting">
+        <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_help"
+                android:title="@string/menu_help" />
+            <item
+                android:id="@+id/nav_opensource"
+                android:icon="@drawable/ic_opensource"
+                android:title="@string/menu_opensource" />
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@drawable/ic_setting"
+                android:title="@string/menu_setting" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/menu_logout" />
         </menu>
     </item>
 

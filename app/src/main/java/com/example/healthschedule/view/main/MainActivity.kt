@@ -8,6 +8,8 @@ import android.view.MotionEvent
 import android.view.animation.Animation
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.page.PageAdapter
 import com.example.healthschedule.adapter.workout.WorkoutAdapter
@@ -17,7 +19,6 @@ import com.example.healthschedule.utils.CommonDefine.Companion.REQUEST_CODE_CALE
 import com.example.healthschedule.utils.CommonDefine.Companion.REQUEST_CODE_REGISTRATION
 import com.example.healthschedule.utils.DateUtils.getDate
 import com.example.healthschedule.utils.DateUtils.getTodayPosition
-import com.example.healthschedule.utils.ToastUtils.cancelToast
 import com.example.healthschedule.utils.ToastUtils.showToast
 import com.example.healthschedule.view.calendar.CalendarActivity
 import com.example.healthschedule.view.registration.RegistrationActivity
@@ -53,28 +54,53 @@ class MainActivity : BaseActivity(), MainContract.View {
 //        presenter.registrationWorkout(presenter.initWeekly()) // 운동 초기화
 
 
-        val margin: Int = presenter.getViewPagerMargin(this)
 //        viewpager.setPageTransformer(true, PageTransformer()) // 뷰페이저 이동시 생기는 이펙트효과
+        val margin: Int = presenter.getViewPagerMargin(this)
         viewpager.offscreenPageLimit = 4
         viewpager.setPadding(margin * 5, margin, margin * 5, margin)
         viewpager.pageMargin = (margin / 2)
+        // 현재 날짜에 맞는 뷰페이저를 선택한다.
         viewpager.currentItem = getTodayPosition().let {
-            when(it) {
+            when (it) {
                 -1 -> 6
                 else -> it
             }
         }
-//            if(getTodayPosition()==-1) 6 else getTodayPosition() // 현재 요일
+
 
 
         setSupportActionBar(toolbar)
-        ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close).let {
+        ActionBarDrawerToggle(
+            this,
+            drawer,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        ).let {
             drawer.addDrawerListener(it)
             it.syncState()
             it.drawerArrowDrawable = DrawerArrowDrawable(this).apply {
-                color = resources.getColor(R.color.colorwhite,null)
+                color = resources.getColor(R.color.colorwhite, null)
             }
         }
+        nav_view.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_profile -> showToast(it.title.toString())
+                R.id.nav_statistics -> showToast(it.title.toString())
+                R.id.nav_board -> showToast(it.title.toString())
+                R.id.nav_motivation -> showToast(it.title.toString())
+                R.id.nav_contact -> showToast(it.title.toString())
+                R.id.nav_star -> showToast(it.title.toString())
+                R.id.nav_help -> showToast(it.title.toString())
+                R.id.nav_opensource -> showToast(it.title.toString())
+                R.id.nav_setting -> showToast(it.title.toString())
+                R.id.nav_logout -> showToast(it.title.toString())
+                else -> ""
+            }
+            drawer.closeDrawer(GravityCompat.START)
+            true
+        }
+
         setOnClickListener()
     }
 
@@ -92,8 +118,8 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when(requestCode) {
-            REQUEST_CODE_REGISTRATION -> Log.e("Registration","Add OK")
+        when (requestCode) {
+            REQUEST_CODE_REGISTRATION -> Log.e("Registration", "Add OK")
             REQUEST_CODE_CALENDAR -> ""
         }
 //        showToast(requestCode.toString())
@@ -107,18 +133,21 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
 
-    override fun onBackPressed() = super.onBackPressed()
-
-    override fun showSubFab(fabAction: Animation, fabRotateAction: Animation) {
-        fab.startAnimation(fabRotateAction)
-        fabSub1.startAnimation(fabAction)
-        fabSub2.startAnimation(fabAction)
-        tv_registration.startAnimation(fabAction)
-        tv_calendar.startAnimation(fabAction)
+    override fun onBackPressed() {
+        presenter.animOff()
+        when (drawer.isDrawerOpen(GravityCompat.START)) {
+            true -> {
+                drawer.closeDrawer(GravityCompat.START)
+            }
+            false -> {
+                super.onBackPressed()
+            }
+        }
 
     }
 
-    override fun hideSubFab(fabAction: Animation, fabRotateAction: Animation) {
+
+    override fun actionFab(fabAction: Animation, fabRotateAction: Animation) {
         fab.startAnimation(fabRotateAction)
         fabSub1.startAnimation(fabAction)
         fabSub2.startAnimation(fabAction)
@@ -133,12 +162,12 @@ class MainActivity : BaseActivity(), MainContract.View {
     }
 
     private fun setOnClickListener() {
-        var count = 0;
-        var moveStart = 0f;
-        var moveEnd = 0f;
-//        presenter.loadItems(DateUtils.day,false)
+        var count = 0
+        var moveStart = 0f
+        var moveEnd = 0f
+
         viewpager.setOnTouchListener { v, event ->
-                        Log.e("viewpager",event.toString())
+            Log.e("viewpager", event.toString())
 
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -161,10 +190,9 @@ class MainActivity : BaseActivity(), MainContract.View {
             }
         }
         viewpager.setOnClickListener {
-//            showToast("${DateUtils.getDate(DateUtils.week, viewpager.currentItem)}")
+            //            showToast("${DateUtils.getDate(DateUtils.week, viewpager.currentItem)}")
             showToast("${getDate(viewpager.currentItem)}")
         }
-
 
 
         // Floating 버튼 클릭 이벤트

@@ -5,12 +5,15 @@ import android.content.Context
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.page.PageAdapterContract
 import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
 import com.example.healthschedule.data.CardItem
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 import com.example.healthschedule.data.source.WeeklyWorkoutSource
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainPresenter : MainContract.Presenter {
     var isButtonExtended: Boolean = false
@@ -23,22 +26,35 @@ class MainPresenter : MainContract.Presenter {
 
 
     override fun anim() {
-        val fabOpen: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_open)
-        val fabClose: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_close)
-        val fabRotateOpen: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_rotate_open)
-        val fabRotateClose: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_rotate_close)
+
 
         when (isButtonExtended) {
             true -> {
-                mainView.hideSubFab(fabClose, fabRotateClose)
-                mainView.isExpanded(false)
+                animOff()
             }
             false -> {
-                mainView.showSubFab(fabOpen, fabRotateOpen)
-                mainView.isExpanded(true)
+                animOn()
             }
         }
     }
+
+    override fun animOn() {
+        val fabOpen: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_open)
+        val fabRotateOpen: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_rotate_open)
+        mainView.actionFab(fabOpen, fabRotateOpen)
+        mainView.isExpanded(true)
+    }
+
+    override fun animOff() {
+        if(isButtonExtended)  {
+            val fabClose: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_close)
+            val fabRotateClose: Animation = AnimationUtils.loadAnimation(mainView as Context, R.anim.fab_rotate_close)
+
+            mainView.actionFab(fabClose, fabRotateClose)
+            mainView.isExpanded(false)
+        }
+    }
+
 
 
     override fun getViewPagerMargin(context: Context): Int =

@@ -2,6 +2,7 @@ package com.example.healthschedule.view.main
 
 import android.content.Context
 import android.view.animation.Animation
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.healthschedule.adapter.page.PageAdapterContract
 import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
 import com.example.healthschedule.data.CardItem
@@ -25,6 +26,10 @@ interface MainContract {
 
         fun anim()
 
+        fun animOn()
+
+        fun animOff()
+
         fun getViewPagerMargin(context: Context) : Int
 
         fun registrationWorkout(workoutName: ArrayList<CardItem>)
@@ -38,14 +43,9 @@ interface MainContract {
 
     interface View {
         /**
-         * Floating button을 클릭시 확장되는 SubFloating button을 보여준다.
+         * Floating button을 클릭시 확장되어 있는 SubFloating button을 show/hide 한다.
          */
-        fun showSubFab(fabAction : Animation, fabRotateAction : Animation)
-
-        /**
-         * Floating button을 클릭시 확장되어 있는 SubFloating button을 숨긴다.
-         */
-        fun hideSubFab(fabAction : Animation, fabRotateAction : Animation)
+        fun actionFab(fabAction : Animation, fabRotateAction: Animation)
 
         /**
          * Floating button이 확장되어있는지 여부를 반환한다.
