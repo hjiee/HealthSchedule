@@ -16,7 +16,6 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed()
             ToastUtils.cancelToast()

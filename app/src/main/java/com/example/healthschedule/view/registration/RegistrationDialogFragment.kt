@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.dialog_registration.*
 import kotlinx.android.synthetic.main.dialog_registration.view.*
 import kotlinx.android.synthetic.main.dialog_registration.view.recycler_workout
 import kotlinx.android.synthetic.main.expansion_panel_sample_panel.*
+import kotlinx.android.synthetic.main.expansion_panel_sample_panel.view.*
 import kotlinx.android.synthetic.main.include_bottom_layout.view.btn_cancel
 import kotlinx.android.synthetic.main.include_bottom_layout.view.btn_ok
 
@@ -50,10 +51,8 @@ class RegistrationDialogFragment : DialogFragment() {
 //        dialog.window.attributes = layoutParams
 
 
-
-        val adapter = RegistrationAdapter((1..3).map { "Item: $it" }.toMutableList())
+        val adapter = RegistrationAdapter((3 downTo 1).map { WorkoutDto(it,"$it") }.toMutableList())
         view.recycler_workout.adapter = adapter
-
         // 스와이프로 리사이클러뷰의 아이템을 삭제한다.
         val swipHandler = object : SwipeToDeleteCallback(context!!) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -65,11 +64,14 @@ class RegistrationDialogFragment : DialogFragment() {
         itemTouchHelper.attachToRecyclerView(view.recycler_workout)
 
 
+        // Add
         var count = 0
         view.tv_week.text = tag
         view.btn_add.setOnClickListener {
-            adapter.addItem("Item: ${count++}")
+            adapter.addItem(WorkoutDto(0,"${adapter.getItemCount()+1}")) // 아이템 추가
         }
+
+
 
 
         // Ok Cancel

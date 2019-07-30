@@ -36,6 +36,8 @@ dependencies {
     // Lottie
     implementation 'com.airbnb.android:lottie:3.0.7'
 
+
+
     // expansion panels
 //    implementation 'com.github.florent37:expansionpanel:1.2.2'
 

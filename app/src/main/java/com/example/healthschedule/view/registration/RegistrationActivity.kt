@@ -1,6 +1,7 @@
 package com.example.healthschedule.view.registration
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
@@ -10,6 +11,7 @@ import com.example.healthschedule.adapter.workout.WorkoutAdapter
 import com.example.healthschedule.base.BaseActivity
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 import com.example.healthschedule.utils.ToastUtils.showToast
+import com.example.healthschedule.view.main.MainActivity
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.custom_view_registartion_item.view.*
 
@@ -36,7 +38,8 @@ class RegistrationActivity : BaseActivity(), RegistrationContract.View {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        startActivity(Intent(this,MainActivity::class.java))
+        finish()
 
     }
 
