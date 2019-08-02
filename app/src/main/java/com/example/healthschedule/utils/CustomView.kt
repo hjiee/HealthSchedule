@@ -14,7 +14,7 @@ class CustomView(context: Context, attrs: AttributeSet) : LinearLayout(context,a
         LayoutInflater.from(context).inflate(R.layout.custom_view_registartion_item,this,true)
         val attributes = context.obtainStyledAttributes(attrs,R.styleable.CustomView)
         iv_day.setImageDrawable(attributes.getDrawable(R.styleable.CustomView_image))
-        tv_workout.text = attributes.getString(R.styleable.CustomView_text)
+        tv_workout_title.text = attributes.getString(R.styleable.CustomView_text)
         attributes.recycle()
 
     }

@@ -1,20 +1,18 @@
 package com.example.healthschedule.view.registration
 
-import android.content.Context
-import android.util.Log
-import androidx.appcompat.app.AlertDialog
-import android.view.LayoutInflater
-import android.widget.Toast
+import android.view.View
 import androidx.fragment.app.FragmentManager
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
 import com.example.healthschedule.data.CardItem
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
 import com.example.healthschedule.data.source.WeeklyWorkoutSource
+import com.example.healthschedule.view.registration.dto.ResultWorkoutDto
+import kotlinx.android.synthetic.main.custom_view_registartion_item.view.*
 
 class RegistrationPresenter : RegistrationContract.Presenter {
 
-    lateinit var view: RegistrationContract.View
+    lateinit var regView: RegistrationContract.View
     lateinit var workoutAdapterView: WorkoutAdapterContract.AdaterView
     lateinit var workoutAdapterModel: WorkoutAdapterContract.AdapterModel
     override lateinit var weeklyWorkoutData: WeeklyWorkoutRepository
@@ -23,27 +21,41 @@ class RegistrationPresenter : RegistrationContract.Presenter {
         weeklyWorkoutData.addWorkout(workoutName, object : WeeklyWorkoutSource.LoadCallback {
             override fun onLoad(list: ArrayList<CardItem>) {
                 workoutAdapterModel.registrationWorkout(list)
-                workoutAdapterView?.notifyAdapter()
+                workoutAdapterView.notifyAdapter()
             }
         })
     }
 
-    override fun dialog(supportFragmentManager: FragmentManager, viewId: Int) {
-        when (viewId) {
-            R.id.btn_bring -> BringWorkoutDialogFragment.newInstance().show(supportFragmentManager,"")
+    override fun dialog(supportFragmentManager: FragmentManager, view: View) {
+        when (view.id) {
+            R.id.btn_bring -> BringWorkoutDialogFragment.newInstance().show(supportFragmentManager, "")
             else -> {
-                 RegistrationDialogFragment.newInstance().run {
-                     show(supportFragmentManager, getTag(viewId))
-                     setDailyWorkoutCallback(object : RegistrationDialogFragment.DailyWorkoutCallback {
-                         override fun result() {
-                             Log.e("Registration", "test")
-                         }
-                     })
-                 }
+                RegistrationDialogFragment.newInstance().run {
+                    show(supportFragmentManager, getTag(view.id))
+                    setDailyWorkoutCallback(object : RegistrationDialogFragment.DailyWorkoutCallback {
+                        override fun result(resultWorkoutDto: ResultWorkoutDto) {
+//                             var stringBuffer = StringBuffer("${resultWorkoutDto.day}\n")
+                            // 선택된 운동 목록을 표사한다.
+                            view.tv_workout_hint.visibility = View.GONE
+                            var stringBufferTitle = StringBuffer()
+                            var stringBufferName = StringBuffer()
+                            for (str in resultWorkoutDto.items) {
+                                stringBufferTitle.append("${str.title}\n")
+                                stringBufferName.append("${str.name}\n")
+                            }
+                            view.tv_workout_title.text = stringBufferTitle
+                            view.tv_workout_name.text = stringBufferName
+
+                            view.cardview.run {
+                                setCardBackgroundColor(resources.getColor(R.color.colorSelected, null))
+                            }
+
+                        }
+                    })
+                }
             }
         }
     }
-
 
 
     override fun addWeekly(): ArrayList<CardItem> {

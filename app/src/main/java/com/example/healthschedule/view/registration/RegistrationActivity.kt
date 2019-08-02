@@ -24,7 +24,7 @@ class RegistrationActivity : BaseActivity(), RegistrationContract.View {
         val wokroutAdapter = WorkoutAdapter()
 
         presenter = RegistrationPresenter().apply {
-            view = this@RegistrationActivity
+            regView = this@RegistrationActivity
             workoutAdapterView = wokroutAdapter
             workoutAdapterModel = wokroutAdapter
             weeklyWorkoutData = WeeklyWorkoutRepository
@@ -45,18 +45,18 @@ class RegistrationActivity : BaseActivity(), RegistrationContract.View {
 
     override fun setDailyWorkout(viewId: Int, result: String) {
         when (viewId) {
-            R.id.view_monday -> view_monday.tv_workout.text = result
-            R.id.view_tuesday -> view_tuesday.tv_workout.text = result
-            R.id.view_wednesday -> view_wednesday.tv_workout.text = result
-            R.id.view_thursday -> view_thursday.tv_workout.text = result
-            R.id.view_friday -> view_friday.tv_workout.text = result
-            R.id.view_saturday -> view_saturday.tv_workout.text = result
-            R.id.view_sunday -> view_sunday.tv_workout.text = result
+            R.id.view_monday -> view_monday.tv_workout_title.text = result
+            R.id.view_tuesday -> view_tuesday.tv_workout_title.text = result
+            R.id.view_wednesday -> view_wednesday.tv_workout_title.text = result
+            R.id.view_thursday -> view_thursday.tv_workout_title.text = result
+            R.id.view_friday -> view_friday.tv_workout_title.text = result
+            R.id.view_saturday -> view_saturday.tv_workout_title.text = result
+            R.id.view_sunday -> view_sunday.tv_workout_title.text = result
             else -> showToast(resources.getString(R.string.NotFound))
         }
     }
 
     fun onClick(view: View) {
-        presenter.dialog(supportFragmentManager, view.id)
+        presenter.dialog(supportFragmentManager, view)
     }
 }

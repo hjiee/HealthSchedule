@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.healthschedule.R
-import com.example.healthschedule.view.registration.dto.WorkoutDto
+import com.example.healthschedule.view.registration.dto.EachWorkoutDto
 
-class RegistrationAdapter(private val list: MutableList<WorkoutDto>) : RecyclerView.Adapter<RegistrationViewHolder>() {
+class RegistrationAdapter(private val list: MutableList<EachWorkoutDto>) : RecyclerView.Adapter<RegistrationViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RegistrationViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.expansion_panel_sample_panel, parent, false)
@@ -20,15 +20,15 @@ class RegistrationAdapter(private val list: MutableList<WorkoutDto>) : RecyclerV
         holder.bind(list[position])
     }
 
-    fun getItem(): MutableList<WorkoutDto> {
+    fun getItem(): MutableList<EachWorkoutDto> {
         return list
     }
 
-    fun updateItem(item: WorkoutDto) {
+    fun updateItem(item: EachWorkoutDto) {
 
     }
 
-    fun addItem(item: WorkoutDto) {
+    fun addItem(item: EachWorkoutDto) {
         if (itemCount < 5) {
             list.add(0, item)
             notifyDataSetChanged()

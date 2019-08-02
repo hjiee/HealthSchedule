@@ -19,7 +19,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:image="@drawable/monday"
-                app:text="@string/SelectWorkoutName"
                 android:onClick="onClick"></com.example.healthschedule.utils.CustomView>
 
             <com.example.healthschedule.utils.CustomView
@@ -27,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:image="@drawable/tuesday"
-                app:text="@string/SelectWorkoutName"
                 android:onClick="onClick"
                 app:layout_constraintTop_toBottomOf="@+id/view_monday"></com.example.healthschedule.utils.CustomView>
 
@@ -36,7 +34,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:image="@drawable/wednesday"
-                app:text="@string/SelectWorkoutName"
                 android:onClick="onClick"
                 app:layout_constraintTop_toBottomOf="@+id/view_tuesday"></com.example.healthschedule.utils.CustomView>
 
@@ -45,7 +42,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:image="@drawable/thursday"
-                app:text="@string/SelectWorkoutName"
                 android:onClick="onClick"
                 app:layout_constraintTop_toBottomOf="@+id/view_wednesday"></com.example.healthschedule.utils.CustomView>
 
@@ -54,7 +50,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:image="@drawable/friday"
-                app:text="@string/SelectWorkoutName"
                 android:onClick="onClick"
                 app:layout_constraintTop_toBottomOf="@+id/view_thursday"></com.example.healthschedule.utils.CustomView>
 
@@ -63,7 +58,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:image="@drawable/saturday"
-                app:text="@string/SelectWorkoutName"
                 android:onClick="onClick"
                 app:layout_constraintTop_toBottomOf="@+id/view_friday"></com.example.healthschedule.utils.CustomView>
 
@@ -72,7 +66,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:image="@drawable/sunday"
-                app:text="@string/SelectWorkoutName"
                 android:onClick="onClick"
                 app:layout_constraintTop_toBottomOf="@+id/view_saturday"></com.example.healthschedule.utils.CustomView>
         </androidx.constraintlayout.widget.ConstraintLayout>
