@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "700708165346",
+    "firebase_url": "https://health-9ff03.firebaseio.com",
+    "project_id": "health-9ff03",
+    "storage_bucket": "health-9ff03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700708165346:android:b86246aea800075a",
+        "android_client_info": {
+          "package_name": "com.example.healthschedule"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700708165346-smij89of9l3380odpt95mn4g2en4cqr1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthschedule",
+            "certificate_hash": "a9029baeb3c3724f52d60cb255d1fde9be8660f4"
+          }
+        },
+        {
+          "client_id": "700708165346-pflc2u49t3fsi0pr0ub2um5apuhn9sn2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW9ib8tkNrGyslUNKm3W20NkOyz0AnRyo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700708165346-pflc2u49t3fsi0pr0ub2um5apuhn9sn2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
