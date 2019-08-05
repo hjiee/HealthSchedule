@@ -6,12 +6,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.healthschedule.view.registration.dto.EachWorkoutDto
 import kotlinx.android.synthetic.main.expansion_panel_sample_panel.view.*
 
-class RegistrationViewHolder(view : View) : RecyclerView.ViewHolder(view) {
+class RegistrationViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
-    fun bind(item : EachWorkoutDto) {
-        itemView.sp_name.setSelection(item.selectedTitlePosition)
-        itemView.tv_workout_name.text = item.name
+    fun bind(item: EachWorkoutDto?) {
+        itemView.sp_name.setSelection(item?.selectedTitlePosition ?: 0)
+        itemView.tv_workout_name.text = item?.name
 
 
         itemView.sp_name.onItemSelectedListener = (object : AdapterView.OnItemSelectedListener {
@@ -20,8 +20,8 @@ class RegistrationViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-                item.selectedTitlePosition = position
-                item.title = itemView.sp_name.selectedItem.toString()
+                item?.selectedTitlePosition = position
+                item?.title = itemView.sp_name.selectedItem.toString()
             }
         })
 

@@ -9,14 +9,13 @@ import android.view.animation.Animation
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.page.PageAdapter
 import com.example.healthschedule.adapter.workout.WorkoutAdapter
 import com.example.healthschedule.base.BaseActivity
 import com.example.healthschedule.data.source.WeeklyWorkoutRepository
-import com.example.healthschedule.utils.CommonDefine.Companion.REQUEST_CODE_CALENDAR
-import com.example.healthschedule.utils.CommonDefine.Companion.REQUEST_CODE_REGISTRATION
+import com.example.healthschedule.utils.CommonUtils.Companion.REQUEST_CODE_CALENDAR
+import com.example.healthschedule.utils.CommonUtils.Companion.REQUEST_CODE_REGISTRATION
 import com.example.healthschedule.utils.DateUtils.getDate
 import com.example.healthschedule.utils.DateUtils.getTodayPosition
 import com.example.healthschedule.utils.ToastUtils.showToast
@@ -118,8 +117,11 @@ class MainActivity : BaseActivity(), MainContract.View {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when (requestCode) {
-            REQUEST_CODE_REGISTRATION -> Log.e("Registration", "Add OK")
+        when (resultCode) {
+            REQUEST_CODE_REGISTRATION -> {
+                //TODO 파이어베이스 디비에 들어있는 데이터들을 로드하여 표시하기
+
+            }
             REQUEST_CODE_CALENDAR -> ""
         }
 //        showToast(requestCode.toString())

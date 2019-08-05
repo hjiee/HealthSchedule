@@ -1,6 +1,7 @@
-package com.example.healthschedule.view.registration
+package com.example.healthschedule.view.registration.dialog
 
 import android.os.Bundle
+import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -55,34 +56,38 @@ class RegistrationDialogFragment : DialogFragment() {
         itemTouchHelper.attachToRecyclerView(view.recycler_workout)
 
 
-        // Add
+        // 아이템을 추가한다.
         view.tv_week.text = tag
         view.btn_add.setOnClickListener {
             adapter.addItem(EachWorkoutDto(0, "어깨", "${adapter.getItemCount() + 1}")) // 아이템 추가
         }
 
+        // 추가된 아이템을 모두 삭제한다.
+        view.findViewById<ImageView>(R.id.img_all_delete).run {
+            setOnClickListener { adapter.removeAll() }
+        }
 
-        // Ok or Cancel
+        // 추가된 아이템을 담는다.
         view.findViewById<View>(R.id.include_bottom_layout).run {
             btn_ok.setOnClickListener {
                 if (adapter.itemCount > 0) {
-                    ResultWorkoutDto(
-                        view.tv_week.text.toString(),
-                        adapter.getItem()
-                    ).let {
-                        registrationCallback?.result(it)
+                    view.tv_week.text.toString().let { day ->
+                        ResultWorkoutDto(
+                            day,
+                            com.example.healthschedule.utils.DateUtils.getPosion(day),
+                            adapter.getItem()
+                        ).let { result -> registrationCallback?.result(result) }
                     }
+
                     dismiss()
-                }
-                else {
-                    Toast.makeText(context,"추가된 운동이 없습니다.",Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, "추가된 운동이 없습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
             btn_cancel.setOnClickListener { dismiss() }
         }
-        view.findViewById<ImageView>(R.id.img_all_delete).run {
-            setOnClickListener { adapter.removeAll() }
-        }
+
+
 
 
         return view

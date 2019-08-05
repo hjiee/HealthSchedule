@@ -1,4 +1,4 @@
-package com.example.healthschedule.view.registration
+package com.example.healthschedule.view.registration.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater

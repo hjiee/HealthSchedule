@@ -114,7 +114,7 @@ class RegistrationPresenter : RegistrationContract.Presenter {
             setPositiveButton("Ok") { _, _ ->
 
                 //TODO 파이어베이스 디비에 데이터를 저장하기.
-                
+
                 for (i in resultWorkoutList) {
                     Log.e("test", i?.day ?: "null")
                 }

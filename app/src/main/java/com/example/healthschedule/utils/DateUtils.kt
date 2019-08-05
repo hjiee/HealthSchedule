@@ -13,7 +13,7 @@ object DateUtils {
             when (it) {
                 0 -> getToday()
                 else -> {
-                    if(getTodayPosition() == -1) getOtherDay(it-7)
+                    if (getTodayPosition() == -1) getOtherDay(it - 7)
                     else getOtherDay(it)
                 }
             }
@@ -32,8 +32,21 @@ object DateUtils {
         getSimpleDateFormat(Date(it.timeInMillis))
     }
 
-    fun getMonth() = getCalendar().let { it.get(Calendar.MONTH)+1 }.toString()
+    fun getMonth() = getCalendar().let { it.get(Calendar.MONTH) + 1 }.toString()
     fun getWeek() = getCalendar().let { it.get(Calendar.WEEK_OF_MONTH) }.toString()
     fun getCalendar() = Calendar.getInstance(TimeZone.getDefault())
+
+    fun getPosion(day: String): Int =
+        when (day) {
+            "월요일" -> 0
+            "화요일" -> 1
+            "수요일" -> 2
+            "목요일" -> 3
+            "금요일" -> 4
+            "토요일" -> 5
+            "일요일" -> 6
+            else -> 0
+        }
+
 
 }
