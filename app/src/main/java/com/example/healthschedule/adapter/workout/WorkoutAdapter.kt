@@ -1,9 +1,8 @@
 package com.example.healthschedule.adapter.workout
 
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import com.example.healthschedule.data.CardItem
+import com.example.healthschedule.data.dto.CardItem
 
 class WorkoutAdapter : RecyclerView.Adapter<WorkoutViewHolder>(),
     WorkoutAdapterContract.AdaterView,

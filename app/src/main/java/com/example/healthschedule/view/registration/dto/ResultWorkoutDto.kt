@@ -1,9 +1,11 @@
 package com.example.healthschedule.view.registration.dto
 
+import java.util.*
+
 data class ResultWorkoutDto(
-    var day: String,
+    var date : String,
     var position : Int,
-    var items: MutableList<EachWorkoutDto?>
+    var workouts: MutableList<EachWorkoutDto?>?
 ) {
 
 }

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.healthschedule.R
 import com.example.healthschedule.adapter.registration.RegistrationAdapter
 import com.example.healthschedule.adapter.registration.SwipeToDeleteCallback
+import com.example.healthschedule.utils.DateUtils.getDate
 import com.example.healthschedule.view.registration.dto.EachWorkoutDto
 import com.example.healthschedule.view.registration.dto.ResultWorkoutDto
 import kotlinx.android.synthetic.main.dialog_registration.view.*
@@ -73,7 +74,7 @@ class RegistrationDialogFragment : DialogFragment() {
                 if (adapter.itemCount > 0) {
                     view.tv_week.text.toString().let { day ->
                         ResultWorkoutDto(
-                            day,
+                            getDate(com.example.healthschedule.utils.DateUtils.getPosion(day)),
                             com.example.healthschedule.utils.DateUtils.getPosion(day),
                             adapter.getItem()
                         ).let { result -> registrationCallback?.result(result) }

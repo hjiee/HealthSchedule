@@ -1,8 +1,8 @@
 package com.example.healthschedule.data.source
 
-import com.example.healthschedule.data.CardItem
+import com.example.healthschedule.data.dto.CardItem
 
-object WeeklyWorkoutDataSource : WeeklyWorkoutSource {
+class WeeklyWorkoutDataSource : WeeklyWorkoutSource {
     private var list = ArrayList<CardItem>()
     override fun getWorkout(position: Int, loadWorkoutCallback: WeeklyWorkoutSource.LoadCallback?) {
         if(!list.isNullOrEmpty()) {

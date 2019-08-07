@@ -13,12 +13,11 @@ import com.example.healthschedule.R
 import com.example.healthschedule.adapter.page.PageAdapter
 import com.example.healthschedule.adapter.workout.WorkoutAdapter
 import com.example.healthschedule.base.BaseActivity
-import com.example.healthschedule.data.source.WeeklyWorkoutRepository
+import com.example.healthschedule.data.WeeklyWorkoutRepository
 import com.example.healthschedule.utils.CommonUtils.Companion.REQUEST_CODE_CALENDAR
 import com.example.healthschedule.utils.CommonUtils.Companion.REQUEST_CODE_REGISTRATION
 import com.example.healthschedule.utils.DateUtils.getDate
 import com.example.healthschedule.utils.DateUtils.getTodayPosition
-import com.example.healthschedule.utils.ToastUtils.showToast
 import com.example.healthschedule.view.calendar.CalendarActivity
 import com.example.healthschedule.view.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -48,7 +47,7 @@ class MainActivity : BaseActivity(), MainContract.View {
             pagerAdapterModel = pageAdapter
             workoutAdapterView = workoutAdapter
             workoutAdapterModel = workoutAdapter
-            weeklyWorkoutData = WeeklyWorkoutRepository
+            weeklyWorkoutData = WeeklyWorkoutRepository()
         }
 //        presenter.registrationWorkout(presenter.initWeekly()) // 운동 초기화
 
@@ -82,17 +81,29 @@ class MainActivity : BaseActivity(), MainContract.View {
                 color = resources.getColor(R.color.colorwhite, null)
             }
         }
+
+        // 네비게이션 메뉴 선택
         nav_view.setNavigationItemSelectedListener {
             when (it.itemId) {
+                // 프로필
                 R.id.nav_profile -> showToast(it.title.toString())
+                // 통계
                 R.id.nav_statistics -> showToast(it.title.toString())
+                // 게시판
                 R.id.nav_board -> showToast(it.title.toString())
+                // 동기부여(유튜브영상 재생)
                 R.id.nav_motivation -> showToast(it.title.toString())
+                // 문의하기
                 R.id.nav_contact -> showToast(it.title.toString())
+                // 평점주기
                 R.id.nav_star -> showToast(it.title.toString())
+                // 도움말
                 R.id.nav_help -> showToast(it.title.toString())
+                // 오픈소스 라이센스
                 R.id.nav_opensource -> showToast(it.title.toString())
+                // 설정
                 R.id.nav_setting -> showToast(it.title.toString())
+                // 로그아웃
                 R.id.nav_logout -> showToast(it.title.toString())
                 else -> ""
             }

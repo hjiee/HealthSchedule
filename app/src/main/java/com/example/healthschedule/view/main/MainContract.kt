@@ -2,11 +2,9 @@ package com.example.healthschedule.view.main
 
 import android.content.Context
 import android.view.animation.Animation
-import androidx.drawerlayout.widget.DrawerLayout
 import com.example.healthschedule.adapter.page.PageAdapterContract
 import com.example.healthschedule.adapter.workout.WorkoutAdapterContract
-import com.example.healthschedule.data.CardItem
-import com.example.healthschedule.data.source.WeeklyWorkoutRepository
+import com.example.healthschedule.data.WeeklyWorkoutRepository
 
 interface MainContract {
 
@@ -32,11 +30,11 @@ interface MainContract {
 
         fun getViewPagerMargin(context: Context) : Int
 
-        fun registrationWorkout(workoutName: ArrayList<CardItem>)
+//        fun registrationWorkout(workoutName: ArrayList<CardItem>)
 
-        fun initWeekly() : ArrayList<CardItem>
+//        fun initWeekly() : ArrayList<CardItem>
 
-        fun loadItems(position : Int,isClear : Boolean)
+//        fun loadItems(position : Int,isClear : Boolean)
 
         fun getItem(postion : Int) : String?
     }

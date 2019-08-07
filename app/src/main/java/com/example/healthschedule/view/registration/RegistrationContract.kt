@@ -3,8 +3,8 @@ package com.example.healthschedule.view.registration
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentManager
 import com.example.healthschedule.base.BaseContract
-import com.example.healthschedule.data.CardItem
-import com.example.healthschedule.data.source.WeeklyWorkoutRepository
+import com.example.healthschedule.data.dto.CardItem
+import com.example.healthschedule.data.WeeklyWorkoutRepository
 
 interface RegistrationContract {
 

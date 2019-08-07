@@ -1,6 +1,6 @@
 package com.example.healthschedule.adapter.workout
 
-import com.example.healthschedule.data.CardItem
+import com.example.healthschedule.data.dto.CardItem
 
 interface WorkoutAdapterContract {
     interface AdaterView {
