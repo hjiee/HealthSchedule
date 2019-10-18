@@ -19,7 +19,7 @@ open class BaseActivity : AppCompatActivity(), BaseContract.View {
     override fun onBackPressed() {
         if (backPressedTime + 2000 > System.currentTimeMillis()) {
             super.onBackPressed()
-            ToastUtils.cancelToast()
+//            ToastUtils.cancelToast()
         } else {
             backPressedTime = System.currentTimeMillis()
             showToast(resources.getString(R.string.BackPress))

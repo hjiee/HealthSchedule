@@ -39,12 +39,20 @@ class RegistrationDialogFragment : DialogFragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.dialog_registration, container, false)
 
 
 //        val adapter = RegistrationAdapter((1 downTo 1).map { EachWorkoutDto(it,"$it", "$it") }.toMutableList())
-        val adapter = RegistrationAdapter(mutableListOf())
+        val adapter = RegistrationAdapter(
+            mutableListOf(
+                EachWorkoutDto(0, "어깨", "${1}")
+            )
+        )
         view.recycler_workout.adapter = adapter
         // 스와이프로 리사이클러뷰의 아이템을 삭제한다.
         val swipHandler = object : SwipeToDeleteCallback(context!!) {
